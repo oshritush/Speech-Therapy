@@ -3,7 +3,7 @@
 
 var myApp = angular.module("myApp", ["ngRoute"]);
 
-myApp.controller("theropistdataController", ["$scope", "$http", theropistdataController]);
+
 
 
 
@@ -70,7 +70,7 @@ myApp.controller('theropistdata', function ($scope) {
 })
 
 
-.controller('patientsController',function($scope,$http,$q,patientsService){
+.controller('patientsController',function($scope,$rootScope,$http,$q,patientsService){
 	var promise = patientsService.getPatients();
 	promise.then(function(data){
 		
@@ -115,31 +115,32 @@ myApp.controller('theropistdata', function ($scope) {
     };
 	
 	$scope.update = function(id) {
-        $http.put('https://api.mlab.com/api/1/databases/speach-theropy/collections/Patient' + id + '?apiKey=XvABGEjSRBRVhRBHAwKr5XvGS32ARJXw', { 'firstName': $scope.patient.firstName, 'lastName': $scope.patient.lastName, 'phone': $scope.patient.phone, 'EMail': $scope.patient.EMail })
+		var tbd = id.$oid;
+        $http.put('https://api.mlab.com/api/1/databases/speach-theropy/collections/Patient/' + tbd + '?apiKey=XvABGEjSRBRVhRBHAwKr5XvGS32ARJXw', { 'firstName': $scope.patient.firstName, 'lastName': $scope.patient.lastName, 'phone': $scope.patient.phone, 'EMail': $scope.patient.EMail })
             .success(function(response) {
                 console.log('updated');
 				$scope.displayForm2 = false;
             });
     }
 	
-	//$scope.removeItem = function (data) {
-          //if (confirm('Do you really want to delete?')){
-           // $http['delete']('/patient/' + data.id).success(function() {
-              //$scope.items.splice($scope.items.indexOf(data), 1);
-            //});
-          //}
-        //};
-		
+	
 		
 		
 	
     $scope.removeItem = function(id) {
+		var tbd = id.$oid;
+		console.log(tbd);
 		if (confirm('Do you really want to delete?')){
-        $http['delete']('https://api.mlab.com/api/1/databases/speach-theropy/collections/Patient' + id + '?apiKey=XvABGEjSRBRVhRBHAwKr5XvGS32ARJXw')
+        $http['delete']('https://api.mlab.com/api/1/databases/speach-theropy/collections/Patient/' + tbd + '?apiKey=XvABGEjSRBRVhRBHAwKr5XvGS32ARJXw')
             .then(function(response) {
-				$scope.items.splice($scope.patients.indexOf(patient), 1);
+				//$scope.items.splice($scope.patients.indexOf(patient), 1);
                 console.log('Deleted');
             });
+		   
+		   
+		   //$http.post('/auth/delete', $scope.patient).then(function(response) {
+			   //console.log('Deleted');
+		   //});
 		}
     }
 		
