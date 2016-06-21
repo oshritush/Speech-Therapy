@@ -9,7 +9,7 @@ var orderSchema = new Schema({
 	background:  String,
 	TherapeuticProgram: String,
 	ProgressAndcourseoftreatment: String,
-	Recommendations:String,
+	//Recommendations:String,
     
 });
 
