@@ -110,10 +110,7 @@ myApp.controller('theropistdata', function ($scope) {
             .then(function(response) {
                 console.log("data entered");
 				$('#myModal').modal('hide');
-				var promise = patientsService.getPatients();
-	            promise.then(function(data){
- 		        $scope.patients = data.data;
-		       console.log("this is my data",$scope.patients);
+				$scope.patient = data;
 	          });
             });
     };
