@@ -3,53 +3,64 @@
           Content
 ======================-->
 
-<div style="float:right; padding-top:30px; display:inline">
-<button  class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="addItem()">הוסף חדש</button>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+
+<div  style="height:50px;background-color:#5c627c">
+<h3  style="float:right; padding-left:60px">רשימת מטופלים</h3>
 </div>
+<br>
+<br>
+<br>
+<button  style="background-color:#ec9e9e; font-size:16px"  class="btn btn-block" data-toggle="modal" data-target="#myModal" ng-click="addItem()">הוסף חדש</button>
 
-
-<section id="content" >
-
-<div >
-	<table>
-		<thead>
-			<th>Name</th>
-			<th>Family</th>
-			<th>Phone</th>
-			<th>Email</th>
+<table  class="table" style="direction:rtl; display:block; padding-right:50px">
+		<thead style="direction:rtl;font-family:BN Amnesia">
+			<tr >
+				<th style="direction:rtl" >שם</th>
+				<th style="direction:rtl" >משפחה</th>
+				<th  style="direction:rtl">טלפון</th>
+				<th style="direction:rtl" >מייל</th>
+			</tr>
 		</thead>
 		<tbody>
 			<tr ng-repeat="patient in patients" >
-				<td>{{patient.firstName}}</td>
-				<td>{{patient.lastName}}</td>
-				<td>{{patient.phone}}</td>
-				<td>{{patient.EMail}}</td>
-				<td><button class="btn btn-primary" data-toggle="modal" data-target="#myModal2" ng-click="editItem(patient)">Edit</button></td>
-				<td><button class="btn" ng-click="removeItem(patient._id)">Remove</button></td>
+				<td >{{patient.firstName}}</td>
+				<td >{{patient.lastName}}</td>
+				<td >{{patient.phone}}</td>
+				<td >{{patient.EMail}}</td>
+				<td ><button class="btn " data-toggle="modal" data-target="#myModal2" ng-click="editItem(patient)">ערוך</button></td>
+				<td ><button class="btn " ng-click="removeItem(patient._id)">הסר</button></div></td>
 				<td><button class="btn" >
-				<a href="#/form">add document</a>
-				</button></td>				
+				<a href="#/form">הוסף מסמך</a>
+				</button></div></td>
+				
+				
 			</tr>
 		</tbody>
 	<table>
 
-</div>
+
 
 <!-- Modal for create fun'-->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-show="displayForm">
   <div class="modal-dialog">
     <div class="modal-content">      
-      <div class="modal-body">       
-          <div class="form-group"> <input type="text" name="firstName" ng-model="patient.firstName"  class="form-control" placeholder="firstName" required/>
-		   <span class="errMessage" ng-show="!myModal.firstName.$valid">*</span>	
-		  </div>
-          <div class="form-group"> <input type="text" ng-model="patient.lastName"  class="form-control" placeholder="lastName"/></div>
-          <div class="form-group"> <input type="text" ng-model="patient.phone"  class="form-control" placeholder="phone"/></div>    
-          <div class="form-group"> <input type="text" ng-model="patient.EMail"  class="form-control" placeholder="EMail"/></div>    		       
+      <div class="modal-body">
+       
+          <div class="form-group">  <input type="text" ng-model="patient.firstName"  class="form-control" placeholder="שם פרטי" style="direction:rtl"/></div>
+          <div class="form-group"><input type="text" ng-model="patient.lastName"  class="form-control" placeholder="שם משפחה" style="direction:rtl"/></div>
+          <div class="form-group"> <input type="text" ng-model="patient.phone"  class="form-control" placeholder="טלפון" style="direction:rtl"/></div>    
+          <div class="form-group"> <input type="text" ng-model="patient.EMail"  class="form-control" placeholder="מייל" style="direction:rtl"/></div>    		  
+      
       </div>
       <div class="modal-footer">       
-         <button class="btn btn-primary" ng-click="create()">Save</button>
-         <button class="btn btn-primary" ng-click="removeModal()">Close</button>
+         <button type="button" class="btn btn-default" data-dismiss="modal">סגור</button>
+		 <button class="btn btn-primary" ng-click="create()">שמור</button>
+         
       </div>
     </div>
   </div>
@@ -57,35 +68,32 @@
 
 
 <!-- Modal for addit fun'-->
-<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-show="displayForm2">
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-show="displayForm">
   <div class="modal-dialog">
     <div class="modal-content">      
-      <div class="modal-body">      
-          <div class="form-group"> <input type="text" ng-model="patient.firstName"  class="form-control" placeholder="firstName"/></div>
-          <div class="form-group"><input type="text" ng-model="patient.lastName"  class="form-control" placeholder="lastName"/></div>
-          <div class="form-group"> <input type="text" ng-model="patient.phone"  class="form-control" placeholder="phone"/></div>    
-          <div class="form-group"> <input type="text" ng-model="patient.EMail"  class="form-control" placeholder="EMail"/></div>    		       
+      <div class="modal-body">
+       
+          <div class="form-group">  <input type="text" ng-model="patient.firstName"  class="form-control" placeholder="שם פרטי" style="direction:rtl"/></div>
+          <div class="form-group"><input type="text" ng-model="patient.lastName"  class="form-control" placeholder="שם משפחה" style="direction:rtl"/></div>
+          <div class="form-group"> <input type="text" ng-model="patient.phone"  class="form-control" placeholder="טלפון" style="direction:rtl"/></div>    
+          <div class="form-group"> <input type="text" ng-model="patient.EMail"  class="form-control" placeholder="מייל" style="direction:rtl"/></div>    		  
+      
       </div>
       <div class="modal-footer">       
-         <button class="btn btn-primary" ng-click="update(patient._id)">Update</button>
-		 <button class="btn btn-primary" ng-click="removeModal2()">Close</button>
+         <button type="button" class="btn btn-default" data-dismiss="modal">סגור</button>
+		 <button class="btn btn-primary" ng-click="update()">עדכן</button>
+         
       </div>
     </div>
   </div>
 </div>
+<div style="height:60px; background-color:#5c627c"> </div>
 
 
 
 
-   
-</section>
 
 
-<br>
 
-<br>
-<br>
-<br>
-<br>
 
  
