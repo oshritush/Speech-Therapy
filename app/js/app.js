@@ -112,7 +112,7 @@ myApp.controller('theropistdata', function ($scope) {
 				$('#myModal').modal('hide');
 				$scope.patient = data;
 	          });
-            });
+           
     };
 	
 	$scope.update = function(id) {
