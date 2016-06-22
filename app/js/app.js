@@ -128,14 +128,14 @@ myApp.controller('theropistdata', function ($scope) {
 		
 		
 	
-    $scope.removeItem = function(id) {
+    $scope.removeItem = function(id,index) {
 		console.log(id.$oid);
 		var tbd = id.$oid;
 		console.log(tbd);
 		if (confirm('האם אתה בטוח שאתה רוצה למחוק?')){
         $http['delete']('https://api.mlab.com/api/1/databases/speach-theropy/collections/Patient/' + tbd + '?apiKey=XvABGEjSRBRVhRBHAwKr5XvGS32ARJXw')
             .then(function(response) {
-				$scope.patients.splice($scope.patient, indexOf(id));
+				$scope.patients.splice($scope.patient.indexOf(index), 1);
                 console.log('Deleted');
             });
 		   
