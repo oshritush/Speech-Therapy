@@ -105,7 +105,7 @@ myApp.controller('theropistdata', function ($scope) {
 			console.log("eddit2");
 	};
 		 
-    $scope.create = function() {
+    $scope.create = function(data) {
         $http.post('https://api.mlab.com/api/1/databases/speach-theropy/collections/Patient?apiKey=XvABGEjSRBRVhRBHAwKr5XvGS32ARJXw', { 'firstName': $scope.patient.firstName, 'lastName': $scope.patient.lastName, 'phone': $scope.patient.phone, 'EMail': $scope.patient.EMail })
             .then(function(response) {
                 console.log("data entered");
