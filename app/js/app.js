@@ -99,9 +99,11 @@ myApp.controller('theropistdata', function ($scope) {
 	 
 	 
 	 
-	 $scope.editItem = function (data) {       
+	 $scope.editItem = function (data) { 
+            console.log("eddit");	 
 			$scope.patient = data;
 			$scope.displayForm2 = true;
+			console.log("eddit2");
 	};
 		 
     $scope.create = function() {
