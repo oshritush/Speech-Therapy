@@ -95,9 +95,7 @@ myApp.controller('theropistdata', function ($scope) {
 	   $scope.displayForm = true;
 	 };
 	 
-	 $scope.saveItem = function () {		 
-		 $scope.displayForm = false;	
-	 };
+	 
 	 
 	 
 	 
@@ -110,7 +108,7 @@ myApp.controller('theropistdata', function ($scope) {
         $http.post('https://api.mlab.com/api/1/databases/speach-theropy/collections/Patient?apiKey=XvABGEjSRBRVhRBHAwKr5XvGS32ARJXw', { 'firstName': $scope.patient.firstName, 'lastName': $scope.patient.lastName, 'phone': $scope.patient.phone, 'EMail': $scope.patient.EMail })
             .then(function(response) {
                 console.log("data entered");
-                $scope.displayForm = false;	
+                //$scope.displayForm = false;	
             });
     };
 	
@@ -119,7 +117,7 @@ myApp.controller('theropistdata', function ($scope) {
         $http.put('https://api.mlab.com/api/1/databases/speach-theropy/collections/Patient/' + tbd + '?apiKey=XvABGEjSRBRVhRBHAwKr5XvGS32ARJXw', { 'firstName': $scope.patient.firstName, 'lastName': $scope.patient.lastName, 'phone': $scope.patient.phone, 'EMail': $scope.patient.EMail })
             .success(function(response) {
                 console.log('updated');
-				$scope.displayForm2 = false;
+				//$scope.displayForm2 = false;
             });
     }
 	
