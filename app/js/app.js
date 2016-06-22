@@ -68,7 +68,7 @@ myApp.controller('theropistdata', function ($scope) {
 		return deferred.promise;
 	}
 })
-
+/*
 .service("formsService",function($http,$q){
 	var deferred = $q.defer();
 	$http.get('https://api.mlab.com/api/1/databases/speach-theropy/collections/Form?apiKey=XvABGEjSRBRVhRBHAwKr5XvGS32ARJXw').then(function(data){
@@ -78,7 +78,7 @@ myApp.controller('theropistdata', function ($scope) {
 		return deferred.promise;
 	}
 })
-
+*/
 .controller('patientsController',function($scope,$http,$q,patientsService){
 	var promise = patientsService.getPatients();
 	promise.then(function(data){
@@ -180,7 +180,7 @@ myApp.controller('theropistdata', function ($scope) {
       };
 	
 });
-
+/*
 .controller('formController',function($scope,$http,$q,formsService){
 	var promise = formsService.getForms();
 	promise.then(function(data){
@@ -199,4 +199,4 @@ myApp.controller('theropistdata', function ($scope) {
     }
 });
 
-
+*/
