@@ -73,8 +73,7 @@ myApp.controller('theropistdata', function ($scope) {
 .controller('patientsController',function($scope,$rootScope,$http,$q,patientsService){
 	var promise = patientsService.getPatients();
 	promise.then(function(data){
-		
-		$scope.patients = data.data;
+ 		$scope.patients = data.data;
 		//console.log("this is my data",$scope.patients);
 	});
 	
@@ -110,12 +109,7 @@ myApp.controller('theropistdata', function ($scope) {
         $http.post('https://api.mlab.com/api/1/databases/speach-theropy/collections/Patient?apiKey=XvABGEjSRBRVhRBHAwKr5XvGS32ARJXw', { 'firstName': $scope.patient.firstName, 'lastName': $scope.patient.lastName, 'phone': $scope.patient.phone, 'EMail': $scope.patient.EMail })
             .then(function(response) {
                 console.log("data entered");
-				//$scope.displayForm = false;
-                var promise = patientsService.getPatients();
-	            promise.then(function(data){	
-		        $scope.patients = data.data;
-		        console.log("this is my data",$scope.patients);
-	            });
+				$('#myModal').modal('hide');
             });
     };
 	
