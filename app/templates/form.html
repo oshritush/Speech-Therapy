@@ -125,16 +125,17 @@
 
     <div class="form-group col-sm-10" style="float:right">
       <label for="comment">אבחונים וטיפולים נוספים</label>
-      <textarea class="form-control" rows="6" id="comment"></textarea>
+      <textarea class="form-control" rows="6" id="comment">{{Form.AdditionalDiagnostics}}</textarea>
     </div>
     <div class="form-group col-sm-6" style="float:right">
             <label for="address">גורם מפנה:</label>
-            <input type="text" class="form-control" id="send1"/>
+            <input type="text" class="form-control" id="send1"/>{{Form.Referrer}}
           </div>
 
           <div class="form-group col-sm-6">
               <label for="sel1">סיבת ההפניה:</label>
               <select class="form-control" id="Select2">
+			  <option> {{Form.causeReferral}}</option>
                 <option>מובנות דיבור ירודה</option>
                 <option>קשיי שפה</option>
                 <option>אחר</option>
@@ -145,22 +146,26 @@
             <div class="form-group col-sm-6" style="float:right">
             <label for="address">תאריך:</label>
             <input type="text" class="form-control" id="date"/>
+			{{Form.date}}
           </div>
           <div class="form-group col-sm-6" style="float:right">
             <label for="address">בדיקת שמיעה:</label>
             <input type="text" class="form-control" id="ear"/>
+			{{Form.HearingTest}}
           </div>
            <div class="form-group col-sm-6" style="float:right">
             <label for="address">מועד אבחון</label>
             <input type="text" class="form-control" id="date2"/>
+			{{Form.DateDiagnosis}}
           </div>
             <div class="form-group col-sm-6" style="float:right">
             <label for="address">שם מאבחן:</label>
             <input type="text" class="form-control" id="speachT"/>
+			{{Form.diagnosesName}}
           </div>
           <div class="form-group col-sm-10" style="float:right">
       <label for="comment">תוצאות האבחון:</label>
-      <textarea class="form-control" rows="6" id="result"></textarea>
+      <textarea class="form-control" rows="6" id="result">{{Form.DiagnosticResults}}</textarea>
     </div>
     </form>
   </div>
@@ -174,30 +179,33 @@
           <div class="form-group col-sm-4" style="float:right">
             <label for="address">תחילת טיפול</label>
             <input type="text" class="form-control" id="Text1"/>
+			{{Form.GettingTreatment}}
           </div>
           <div class="form-group col-sm-4" style="float:right">
             <label for="address">סדרת טיפול מס':</label>
             <input type="text" class="form-control" id="numof"/>
+			{{Form.eriesRegimen}}
           </div>
            <div class="form-group col-sm-4" style="float:right">
             <label for="address">סה"כ טיפולים בפועל:</label>
             <input type="text" class="form-control" id="Text2"/>
+			{{Form.TotalActualTreatments}}
           </div>
           <div class="form-group col-sm-10" style="float:right">
       <label for="comment">רקע</label>
-      <textarea class="form-control" rows="6" id="backg"></textarea>
+      <textarea class="form-control" rows="6" id="backg">{{Form.background}}</textarea>
     </div>
        <div class="form-group col-sm-10" style="float:right">
       <label for="comment">תוכנית טיפולית</label>
-      <textarea class="form-control" rows="6" id="prog"></textarea>
+      <textarea class="form-control" rows="6" id="prog">{{Form.TherapeuticProgram}}</textarea>
     </div>
        <div class="form-group col-sm-10" style="float:right">
       <label for="comment">התקדמות ומהלך הטיפול</label>
-      <textarea class="form-control" rows="6" id="conti"></textarea>
+      <textarea class="form-control" rows="6" id="conti">{{Form.ProgressDuringTreatment}}</textarea>
     </div>
        <div class="form-group col-sm-10" style="float:right">
       <label for="comment">המלצות</label>
-      <textarea class="form-control" rows="6" id="recomm"></textarea>
+      <textarea class="form-control" rows="6" id="recomm">{{Form.Recommendations}}</textarea>
     </div>
 </form>
 </div>
