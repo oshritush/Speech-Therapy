@@ -69,8 +69,17 @@ myApp.controller('theropistdata', function ($scope) {
 	}
 })
 
+.service("formsService",function($http,$q){
+	var deferred = $q.defer();
+	$http.get('https://api.mlab.com/api/1/databases/speach-theropy/collections/Form?apiKey=XvABGEjSRBRVhRBHAwKr5XvGS32ARJXw').then(function(data){
+		deferred.resolve(data);
+	});
+	this.getForms = function(){
+		return deferred.promise;
+	}
+})
 
-.controller('patientsController',function($scope,$rootScope,$http,$q,patientsService){
+.controller('patientsController',function($scope,$http,$q,patientsService){
 	var promise = patientsService.getPatients();
 	promise.then(function(data){
  		$scope.patients = data.data;
@@ -148,7 +157,17 @@ myApp.controller('theropistdata', function ($scope) {
 			   //console.log('Deleted');
 		   //});
 		}
+	}
+	
+	$scope.addForm = function(id) {		 
+		var tbd = id.$oid;
+        $http.put('https://api.mlab.com/api/1/databases/speach-theropy/collections/Patient/' + tbd + '?apiKey=XvABGEjSRBRVhRBHAwKr5XvGS32ARJXw', { 'EMail': $scope.patient.EMail })
+            .success(function(response) {
+                console.log('addForm');
+            });
     }
+	
+    
 	
 	  $scope.removeModal= function(){
          // $('.modal').modal('hide');
@@ -162,5 +181,22 @@ myApp.controller('theropistdata', function ($scope) {
 	
 });
 
+.controller('formController',function($scope,$http,$q,formsService){
+	var promise = formsService.getForms();
+	promise.then(function(data){
+ 		$scope.pforms = data.data;
+		//console.log("this is my data",$scope.patients);
+	});
+	
+	$scope.update = function(id) {
+		 
+		var tbd = id.$oid;
+        $http.put('https://api.mlab.com/api/1/databases/speach-theropy/collections/Form/' + tbd + '?apiKey=XvABGEjSRBRVhRBHAwKr5XvGS32ARJXw', { 'ID': $scope.pform.ID, 'AdditionalDiagnostics': $scope.pform.AdditionalDiagnostics, 'Referrer': $scope.pform.Referrer, 'causeReferral': $scope.pform.causeReferral, 'date': $scope.pform.date, 'HearingTest': $scope.pform.HearingTest,  'DateDiagnosis': $scope.pform.DateDiagnosis, 'diagnosesName': $scope.pform.diagnosesName, 'DiagnosticResults': $scope.pform.DiagnosticResults, 'GettingTreatment': $scope.pform.GettingTreatment, 'eriesRegimen': $scope.pform.eriesRegimen, 'TotalActualTreatments': $scope.pform.TotalActualTreatments, 'background': $scope.pform.background, 'TherapeuticProgram': $scope.pform.TherapeuticProgram, 'ProgressDuringTreatment': $scope.pform.ProgressDuringTreatment,  'Recommendations': $scope.pform.Recommendations})
+            .success(function(response) {
+                console.log('updated');
+				//$scope.displayForm2 = false;
+            });
+    }
+});
 
 
