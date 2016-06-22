@@ -128,15 +128,18 @@ myApp.controller('theropistdata', function ($scope) {
 		
 		
 	
-    $scope.removeItem = function(id,index) {
+    $scope.removeItem = function(id,patient) {
+		
 		console.log(id.$oid);
 		var tbd = id.$oid;
 		console.log(tbd);
 		if (confirm('האם אתה בטוח שאתה רוצה למחוק?')){
         $http['delete']('https://api.mlab.com/api/1/databases/speach-theropy/collections/Patient/' + tbd + '?apiKey=XvABGEjSRBRVhRBHAwKr5XvGS32ARJXw')
             .then(function(response) {
-				console.log(index);
-				$scope.patients.splice($scope.patients.indexOf(index), 1);
+				console.log(patient.firstName);
+				
+				$scope.patients.splice($scope.patients.indexOf(patient), 1);
+				
                 console.log('Deleted');
             });
 		   
@@ -146,8 +149,7 @@ myApp.controller('theropistdata', function ($scope) {
 		   //});
 		}
     }
-		
-		
+	
 	  $scope.removeModal= function(){
          // $('.modal').modal('hide');
           $scope.displayForm = false;		 		  
