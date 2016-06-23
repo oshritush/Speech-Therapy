@@ -177,7 +177,7 @@ myApp.controller('theropistdata', function ($scope) {
 	  $scope.removeModal2= function(){
          // $('.modal').modal('hide');
           $scope.displayForm2 = false;		 		  
-      }
+      };
 	
 });
 /*
