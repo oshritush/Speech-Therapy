@@ -33,5 +33,6 @@ Please visit our wiki for furthur project info:
 - [Iteration 3 - Feature Y](https://github.com/oshritush/Speech-Therapy/wiki/Feature-Y---Iteration-3)
 - [Iteration 4 - Feature Z](https://github.com/oshritush/Speech-Therapy/wiki/Feature-Z-Iteration-4)
 
+[Final Presentation](https://github.com/oshritush/Speech-Therapy/blob/master/Speech%20Therapy%20-%20final%20presentation.pptx)
 
 
