@@ -14,6 +14,8 @@
 
 <!-- Latest compiled JavaScript -->
 <script type="" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
  <style> 
      #products div  p{
      width:50%;
@@ -26,11 +28,21 @@
 
 
 <body style="direction:rtl" >
+ <!--tr ng-repeat="Form in Forms" -->     
+ <tr >     
 
 <div class="container" style="padding-top:25px; padding:auto 0px">
+
+
   <h1>סיכום טיפול בשפה ודיבור</h1>
   
 </div>
+<button  style="background-color:#ec9e9e; font-size:16px"  class="btn btn-block" data-toggle="modal" data-target="#myModal" ng-click="addItem()">הוסף חדש</button>
+
+<td ><button class="btn " data-toggle="modal" data-target="#myModal2" ng-click="editItem(Form)">ערוך</button></td>
+				<td ><button class="btn " ng-click="removeItem(Form._id,Form)">הסר</button></div></td>
+
+
 
  <!-- My  Products     -->  
   <section id="products" class="row">
@@ -117,7 +129,7 @@
 
         </form>
       </div>
-      
+
   <div class="col-sm-6"  >
    
     <form role="form">
@@ -206,7 +218,82 @@
 <div class="col-sm-6"  >
 <button type="submit" class="btn btn-default">אישור ושליחה</button>
 </div>
+
 </section>
+
+
+
+</tr>
+
+<!-- Modal for create fun'-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-show="displayForm">
+  <div class="modal-dialog">
+    <div class="modal-content">      
+      <div class="modal-body">
+       
+          <div class="form-group">  <input type="text" ng-model="Form.AdditionalDiagnostics"  class="form-control" placeholder="אבחונים וטיפולים נוספים" style="direction:rtl"/></div>
+          <div class="form-group"><input type="text" ng-model="Form.Referrer"  class="form-control" placeholder="גורם מפנה" style="direction:rtl"/></div>
+          <div class="form-group"> <input type="text" ng-model="Form.causeReferral"  class="form-control" placeholder="סיבת ההפניה" style="direction:rtl"/></div>    
+          <div class="form-group"> <input type="text" ng-model="Form.date"  class="form-control" placeholder="תאריך" style="direction:rtl"/></div>
+		  <div class="form-group"> <input type="text" ng-model="Form.HearingTest"  class="form-control" placeholder="בדיקת שמיעה" style="direction:rtl"/></div> 
+		  <div class="form-group"> <input type="text" ng-model="Form.DateDiagnosis"  class="form-control" placeholder="מועד אבחון" style="direction:rtl"/></div> 
+		  <div class="form-group"> <input type="text" ng-model="Form.diagnosesName"  class="form-control" placeholder="שם מאבחן" style="direction:rtl"/></div>
+          <div class="form-group"> <input type="text" ng-model="Form.DiagnosticResults"  class="form-control" placeholder="תוצאות האבחון" style="direction:rtl"/></div>
+          <div class="form-group"> <input type="text" ng-model="Form.GettingTreatment"  class="form-control" placeholder="תחילת טיפול" style="direction:rtl"/></div>
+          <div class="form-group"> <input type="text" ng-model="Form.eriesRegimen"  class="form-control" placeholder="סדרת טיפול מס" style="direction:rtl"/></div>
+          <div class="form-group"> <input type="text" ng-model="Form.TotalActualTreatments"  class="form-control" placeholder=" טיפולים בפועל" style="direction:rtl"/></div>
+          <div class="form-group"> <input type="text" ng-model="Form.background"  class="form-control" placeholder="רקע" style="direction:rtl"/></div>
+          <div class="form-group"> <input type="text" ng-model="Form.TherapeuticProgram"  class="form-control" placeholder="תוכנית טיפולית" style="direction:rtl"/></div>
+          <div class="form-group"> <input type="text" ng-model="Form.ProgressDuringTreatment"  class="form-control" placeholder="התקדמות ומהלך הטיפול" style="direction:rtl"/></div>
+          <div class="form-group"> <input type="text" ng-model="Form.Recommendations"  class="form-control" placeholder="המלצות" style="direction:rtl"/></div>
+		
+      </div>
+      <div class="modal-footer">       
+         <button type="button" class="btn btn-default" data-dismiss="modal">סגור</button>
+		 <button class="btn btn-primary" ng-click="create()">שמור</button>
+         
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal for addit fun'-->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-show="displayForm">
+  <div class="modal-dialog">
+    <div class="modal-content">      
+      <div class="modal-body">
+       
+		  <div class="form-group">  <input type="text" ng-model="Form.AdditionalDiagnostics"  class="form-control" placeholder="אבחונים וטיפולים נוספים" style="direction:rtl"/></div>
+          <div class="form-group"><input type="text" ng-model="Form.Referrer"  class="form-control" placeholder="גורם מפנה" style="direction:rtl"/></div>
+          <div class="form-group"> <input type="text" ng-model="Form.causeReferral"  class="form-control" placeholder="סיבת ההפניה" style="direction:rtl"/></div>    
+          <div class="form-group"> <input type="text" ng-model="Form.date"  class="form-control" placeholder="תאריך" style="direction:rtl"/></div>
+		  <div class="form-group"> <input type="text" ng-model="Form.HearingTest"  class="form-control" placeholder="בדיקת שמיעה" style="direction:rtl"/></div> 
+		  <div class="form-group"> <input type="text" ng-model="Form.DateDiagnosis"  class="form-control" placeholder="מועד אבחון" style="direction:rtl"/></div> 
+		  <div class="form-group"> <input type="text" ng-model="Form.diagnosesName"  class="form-control" placeholder="שם מאבחן" style="direction:rtl"/></div>
+          <div class="form-group"> <input type="text" ng-model="Form.DiagnosticResults"  class="form-control" placeholder="תוצאות האבחון" style="direction:rtl"/></div>
+          <div class="form-group"> <input type="text" ng-model="Form.GettingTreatment"  class="form-control" placeholder="תחילת טיפול" style="direction:rtl"/></div>
+          <div class="form-group"> <input type="text" ng-model="Form.eriesRegimen"  class="form-control" placeholder="סדרת טיפול מס" style="direction:rtl"/></div>
+          <div class="form-group"> <input type="text" ng-model="Form.TotalActualTreatments"  class="form-control" placeholder=" טיפולים בפועל" style="direction:rtl"/></div>
+          <div class="form-group"> <input type="text" ng-model="Form.background"  class="form-control" placeholder="רקע" style="direction:rtl"/></div>
+          <div class="form-group"> <input type="text" ng-model="Form.TherapeuticProgram"  class="form-control" placeholder="תוכנית טיפולית" style="direction:rtl"/></div>
+          <div class="form-group"> <input type="text" ng-model="Form.ProgressDuringTreatment"  class="form-control" placeholder="התקדמות ומהלך הטיפול" style="direction:rtl"/></div>
+          <div class="form-group"> <input type="text" ng-model="Form.Recommendations"  class="form-control" placeholder="המלצות" style="direction:rtl"/></div>
+				  
+      
+	  
+	  
+	  
+      </div>
+      <div class="modal-footer">       
+         <button type="button" class="btn btn-default" data-dismiss="modal">סגור</button>
+		 <button class="btn btn-primary" ng-click="update(Form._id)">עדכן</button>
+         
+      </div>
+    </div>
+  </div>
+</div>
+<div style="height:60px; background-color:#5c627c"> </div>
 
 
 

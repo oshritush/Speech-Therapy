@@ -8,6 +8,7 @@ var connection = mongoose.createConnection('mongodb://oshrit:12345@ds025459.mlab
 var pasiontSchema = require('../models/pasiont');
 var pasiont = connection.model('pasiont', pasiontSchema);
 
+
 //var request = require('request');
 
 // routes
